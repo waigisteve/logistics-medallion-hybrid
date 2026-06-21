@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#8b5cf6"/>
+    </marker>
+    <style>
+      .title { font: 700 28px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 600 15px Arial, sans-serif; fill: #475569; }
+      .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 18; }
+      .node { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; rx: 16; }
+      .label { font: 700 16px Arial, sans-serif; fill: #0f172a; }
+      .small { font: 13px Arial, sans-serif; fill: #475569; }
+      .control { fill: #f5f3ff; stroke: #a78bfa; stroke-width: 1.5; rx: 14; }
+      .connector { stroke: #8b5cf6; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .guide { stroke: #c4b5fd; stroke-width: 2; stroke-dasharray: 7 7; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <text x="40" y="45" class="title">Hybrid Logistics Streaming Workflow</text>
+  <text x="40" y="73" class="subtitle">Connected self-hosted workflow with replay, deduplication, and tamper controls</text>
+
+  <rect x="28" y="100" width="1344" height="220" class="lane"/>
+  <text x="48" y="128" class="subtitle">Operational Data Path</text>
+
+  <rect x="60" y="160" width="180" height="120" class="node"/>
+  <image href="../icons/apache-kafka.svg" x="78" y="182" width="42" height="42"/>
+  <text x="130" y="205" class="label">Producers</text>
+  <text x="78" y="234" class="small">Vehicles, hubs, partners</text>
+  <text x="78" y="254" class="small">Status and telemetry events</text>
+
+  <rect x="290" y="160" width="180" height="120" class="node"/>
+  <image href="../icons/apache-kafka.svg" x="308" y="182" width="42" height="42"/>
+  <text x="360" y="205" class="label">Kafka</text>
+  <text x="308" y="234" class="small">Replayable ingestion bus</text>
+  <text x="308" y="254" class="small">Partitioned event stream</text>
+
+  <rect x="520" y="160" width="180" height="120" class="node"/>
+  <image href="../icons/minio.svg" x="538" y="182" width="42" height="42"/>
+  <text x="590" y="205" class="label">MinIO Bronze</text>
+  <text x="538" y="234" class="small">Immutable raw landing</text>
+  <text x="538" y="254" class="small">Audit and replay source</text>
+
+  <rect x="750" y="145" width="200" height="150" class="node"/>
+  <image href="../icons/apache-spark.svg" x="768" y="175" width="42" height="42"/>
+  <text x="822" y="200" class="label">Spark or Flink</text>
+  <text x="768" y="228" class="small">Schema checks</text>
+  <text x="768" y="248" class="small">Deduplication and enrichment</text>
+  <text x="768" y="268" class="small">Quarantine and watermarking</text>
+
+  <rect x="1000" y="160" width="180" height="120" class="node"/>
+  <image href="../icons/minio.svg" x="1018" y="182" width="42" height="42"/>
+  <text x="1070" y="205" class="label">MinIO Silver/Gold</text>
+  <text x="1018" y="234" class="small">Iceberg curated lake</text>
+  <text x="1018" y="254" class="small">Facts and marts</text>
+
+  <rect x="1200" y="160" width="140" height="120" class="node"/>
+  <image href="../icons/trino.svg" x="1218" y="182" width="42" height="42"/>
+  <text x="1270" y="205" class="label">Trino</text>
+  <text x="1218" y="234" class="small">Primary serving</text>
+  <text x="1218" y="254" class="small">Optional Snowflake sync</text>
+
+  <path d="M240 220 H290" class="connector"/>
+  <path d="M470 220 H520" class="connector"/>
+  <path d="M700 220 H750" class="connector"/>
+  <path d="M950 220 H1000" class="connector"/>
+  <path d="M1180 220 H1200" class="connector"/>
+
+  <rect x="28" y="350" width="1344" height="210" class="lane"/>
+  <text x="48" y="378" class="subtitle">Control Layer Embedded Into The Workflow</text>
+
+  <rect x="90" y="420" width="300" height="92" class="control"/>
+  <image href="../icons/minio.svg" x="108" y="442" width="34" height="34"/>
+  <text x="154" y="463" class="label">Deletion Protection</text>
+  <text x="108" y="488" class="small">MinIO versioning, Iceberg snapshots, replay from Kafka retention</text>
+
+  <rect x="550" y="420" width="300" height="92" class="control"/>
+  <image href="../icons/apache-spark.svg" x="568" y="442" width="34" height="34"/>
+  <text x="614" y="463" class="label">Duplicate Suppression</text>
+  <text x="568" y="488" class="small">Deterministic event keys, stateful dedup, idempotent Iceberg writes</text>
+
+  <rect x="1010" y="420" width="300" height="92" class="control"/>
+  <image href="../icons/apache-airflow.svg" x="1028" y="442" width="34" height="34"/>
+  <text x="1074" y="463" class="label">Intrusion And Tamper Detection</text>
+  <text x="1028" y="488" class="small">Controlled ops, audit logs, ACL failures, suspicious delete and lag signals</text>
+
+  <path d="M240 420 C240 360, 610 360, 610 295" class="guide"/>
+  <path d="M700 420 C700 365, 850 365, 850 295" class="guide"/>
+  <path d="M1160 420 C1160 365, 1270 365, 1270 280" class="guide"/>
+
+  <rect x="28" y="600" width="1344" height="220" class="lane"/>
+  <text x="48" y="628" class="subtitle">Integrity Outcome</text>
+  <text x="68" y="675" class="label">1. Replay survives through Kafka retention and versioned MinIO storage.</text>
+  <text x="68" y="710" class="label">2. Curated data remains trusted through deterministic deduplication and Iceberg semantics.</text>
+  <text x="68" y="745" class="label">3. Deletion and tampering are recoverable through snapshots, versioning, and controlled operations.</text>
+  <text x="68" y="780" class="label">4. Serving can be rebuilt from curated layers instead of depending on one mutable downstream copy.</text>
+</svg>
