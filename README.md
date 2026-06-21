@@ -9,6 +9,8 @@ This route is the alternative for on-prem or hybrid hosting.
 - `docs/deployment_sequence.md`
 - `docs/cost_model.md`
 - `docs/platform_options.md`
+- `docs/architecture_workflow.md`
+- `docs/integrity_security_controls.md`
 - `terraform/README.md`
 
 Recommended stack:
